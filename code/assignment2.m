@@ -203,8 +203,8 @@ j=0;
 current=0;
 for i = 0.2:.04:0.9
     j=j+1;
-    ny=100;
-    nx=150;
+    ny=50;
+    nx=75;
     current(j)=q2device(i,i/100,50,100,30,70,nx,ny,0);
 end
 x= 0.2:.04:0.9;
@@ -213,6 +213,27 @@ plot (x,current)
 xlabel('conductivity of the higher conductivity region')
 ylabel('current (A)')
 title('current vs.conductivity while \sigma_1=100*\sigma_2')
+
+% Here the current increases as the conductivity increases.  This is
+% expected because as the conductivity increases, the resistance decreases
+% and therefore the current increases
+
+
+%current vs.  increasing conductivity
+j=0;
+current=0;
+for i = 1:100
+    j=j+1;
+    ny=50;
+    nx=75;
+    current(j)=q2device(1,i/100,50,100,30,70,nx,ny,0);
+end
+x= 1/100:1/100:1;
+figure(4)
+plot (x,current)
+xlabel('conductivity of the lower conductivity region')
+ylabel('current (A)')
+title('current vs.conductivity while \sigma_1=1, \sigma_2 varies')
 
 % Here the current increases as the conductivity increases.  This is
 % expected because as the conductivity increases, the resistance decreases
